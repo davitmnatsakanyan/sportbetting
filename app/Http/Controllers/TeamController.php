@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class GroupController extends Controller
+class TeamController extends Controller
 {
-
-    public  function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +17,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = $this->getAllGroups();
-
-        $this->buildGroup($groups, 0);
-
+        $teams = Team::all();
+        return view('admin.teams.index')->with(['teams' => $teams]);
     }
 
     /**
@@ -34,7 +28,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,7 +39,8 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Team::Insert(['name' => $request->name, 'short_name' => $request->short_name]);
+        return redirect('admin/team');
     }
 
     /**
@@ -90,41 +85,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Team::where('id', $id)->delete();
+        return redirect('admin/team');
     }
-
-    public function getAllGroups(){
-        $groups = Group::orderBy('parent')->get()->toArray();
-        return $groups;
-    }
-
-    public  function buildGroup($array, $currentParent, $currLevel = 0, $prevLevel = -1){
-
-            foreach ($array as $k => $category) {
-                if ($currentParent == $category['parent']) {
-
-                    if ($currLevel > $prevLevel && $currentParent == 0) echo " <ul class='nav nav-stacked sTree'> ";
-                    if ($currLevel > $prevLevel && $currentParent != 0) echo " <ul>";
-
-                    if ($currLevel == $prevLevel) echo " </li> ";
-                    echo "<li data-id='" . $category['id'] . "' data-parent-id='" . $category['parent'] . "' >
-                <div>" . $category['name'] . "
-
-                </div>";
-
-                    if ($currLevel > $prevLevel) {
-                        $prevLevel = $currLevel;
-                    }
-
-                    $currLevel++;
-
-                    $this->buildGroup($array, $category['id'], $currLevel, $prevLevel);
-
-                    $currLevel--;
-                }
-
-            }
-
-
-        }
 }

@@ -29,8 +29,13 @@ Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback
  * Admin part
  */
 Route::get('admin/dashboard', 'AdminController@getIndex');
+Route::get('admin/matches', 'AdminController@getMatches');
+Route::post('admin/matches', 'AdminController@postMatches');
 
-
+/*
+ * team part
+ */
+Route::resource('admin/team', 'TeamController');
 /*
  * Groups
  */
