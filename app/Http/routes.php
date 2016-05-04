@@ -11,6 +11,29 @@
 |
 */
 
+use App\Group;
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+/*
+ * User Authentication
+ */
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
+
+/*
+ * Admin part
+ */
+Route::get('admin/dashboard', 'AdminController@getIndex');
+
+
+/*
+ * Groups
+ */
+Route::resource('groups','GroupController');
+
+

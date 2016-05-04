@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Socialite;
 
 class AuthController extends Controller
 {
@@ -23,6 +26,8 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+
+    public $redirectTo = '/';
     /**
      * Create a new authentication controller instance.
      *
@@ -54,12 +59,52 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    protected function create($user)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => $user->name,
+            'username' => $user->id,
+            'email' => $user->email ? $user->email : $user->id,
+            'gender' => $user->user['gender'],
+            'avatar' => $user->avatar_original,
+            'password' => bcrypt($user->id),
         ]);
+    }
+
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $finded_user = User::where('username', $user->id)->first();
+
+        if(is_null($finded_user)) {
+
+            $created_user =$this->create($user);
+
+            Auth::login($created_user);
+
+            return redirect('/');
+        }
+        else {
+            Auth::login($finded_user, true);
+
+            return redirect('/');
+        }
     }
 }
