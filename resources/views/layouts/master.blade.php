@@ -38,7 +38,6 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                    <li><a href="#">{{ Auth::user()->name }}</a></li>
                     @if(Auth::user()->isAdmin())
                     <li><a href="{{ url('admin/dashboard') }}">Admin Area</a></li>
                     @endif
