@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Bet;
 use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
@@ -12,5 +13,9 @@ class Match extends Model
 
     public function t2(){
         $this->hasMany(Team::class, 'id', 'team2');
+    }
+
+    public function bets(){
+      return  $this->hasMany(Bet::class);
     }
 }

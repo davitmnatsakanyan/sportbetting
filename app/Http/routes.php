@@ -41,7 +41,10 @@ Route::controller('admin/matches', 'MatchController');
  */
 Route::controller('admin/teams', 'TeamController');
 
-
+/*
+ * Bet part
+ */
+Route::controller('bets', 'BetController');
 /*
  * Groups
  */
