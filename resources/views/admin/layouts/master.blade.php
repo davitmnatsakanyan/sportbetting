@@ -14,7 +14,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-
 </head>
 <body>
 
@@ -29,7 +28,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('admin/matches') }}">Matches</a></li>
-                <li><a href="#">Teams</a></li>
+                <li><a href="{{ url('admin/teams') }}">Teams</a></li>
                 <li><a href="#">Page 3</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -45,6 +44,6 @@
     </div><!-- /.container-fluid -->
 </nav>
 @yield('content')
-
+<script src="{{  asset('js/index.js') }}"></script>
 </body>
 </html>

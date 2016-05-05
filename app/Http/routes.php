@@ -26,16 +26,22 @@ Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 
 /*
- * Admin part
+ * admin part
  */
 Route::get('admin/dashboard', 'AdminController@getIndex');
-Route::get('admin/matches', 'AdminController@getMatches');
-Route::post('admin/matches', 'AdminController@postMatches');
+
+/*
+ * matches part
+ */
+Route::controller('admin/matches', 'MatchController');
+
 
 /*
  * team part
  */
-Route::resource('admin/team', 'TeamController');
+Route::controller('admin/teams', 'TeamController');
+
+
 /*
  * Groups
  */

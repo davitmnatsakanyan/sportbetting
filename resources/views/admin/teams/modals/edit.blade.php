@@ -7,7 +7,7 @@
                     <h4 class="modal-title" id="myModalLabel">Edit team</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ url('admin/team') }}">
+                    <form id="editteam" method="POST" action="{{ url('admin/teams/update') }}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Team Name">
@@ -15,6 +15,8 @@
                         <div class="form-group">
                             <input type="text" class="form-control" name="short_name" value="{{ old('short_name') }}" placeholder="Team Short Name">
                         </div>
+                        <input type="hidden" name="id">
+
                         <input type="submit" class="btn btn-primary" value="Save">
                     </form>
                 </div>

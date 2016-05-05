@@ -7,7 +7,7 @@
                 <h4 class="modal-title" id="myModalLabel">New Team</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ url('admin/team') }}">
+                <form method="POST" action="{{ url('admin/teams/store') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Team Name">

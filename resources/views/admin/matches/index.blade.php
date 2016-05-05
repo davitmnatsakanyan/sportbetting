@@ -30,12 +30,22 @@
                 <h4 class="modal-title" id="myModalLabel">New Match</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ url('admin/matches') }}">
+                <form method="POST" action="{{ url('admin/matches/store') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <input type="text" class="form-control" name="team1" value="{{ old('team1') }}" placeholder="Team 1">
+                        <select name="team1"  class="form-control">
+                            <option value="">Select team</option>
+                            @foreach($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
                         <span>vs</span>
-                        <input type="text" class="form-control" name="team2" value="{{ old('team2') }}" placeholder="Team 2">
+                        <select name="team2"  class="form-control">
+                            <option value="">Select team</option>
+                            @foreach($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <input type="date" name="date" class="form-control">

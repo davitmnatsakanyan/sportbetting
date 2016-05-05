@@ -13,22 +13,18 @@
             @foreach($teams as $team)
             <tr>
                 <td>{{ $team->id }}</td>
-                <td><img src={{ 'images/teams/'.$team->icon }}></td>
+                <td><img src={{ 'images/teams/'.$team->logo }}></td>
                 <td>{{ $team->name }}</td>
                 <td>{{ $team->short_name }}</td>
                 <td>
 
-                <button data-toggle="modal" data-target="#editModal" title='Edit' style="float: left; margin-right: 10px" class="btn btn-default">
+                <button  data-id="{{ $team->id }}" data-name="{{ $team->name }}" data-logo="{{ $team->logo }}" data-short_name="{{ $team->short_name }}" data-toggle="modal" data-target="#editModal" title='Edit' style="float: left; margin-right: 10px" class="btn btn-default editteam">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </button>
+                <button data-id="{{ $team->id }}" data-toggle="modal" data-target="#deleteModal" title='Delete' class="btn btn-default deleteteam">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
 
-                <form method="POST" action="{{ url('admin/team/'.$team->id) }}">
-                    <input name="_method" type="hidden" value="DELETE">
-                    {{ csrf_field() }}
-                    <button title='Delete'  type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </form>
                 </td>
             </tr>
             @endforeach
@@ -39,6 +35,7 @@
         Add Team
     </button>
 
+    @include('admin.teams.modals.deleteteam')
     @include('admin.teams.modals.edit')
     @include('admin.teams.modals.addteam')
 @endsection
