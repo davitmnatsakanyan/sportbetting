@@ -31,6 +31,8 @@ $(document).ready(function () {
         var date=$(this).data('date');
         var result=$(this).data('result');
         var result_id=$(this).data('result_id');
+        var score1 = $(this).data('score1')
+        var score2 = $(this).data('score2')
 
 
         $('#editmatch').find('select[name="team1"]').val(team1_id);
@@ -40,10 +42,12 @@ $(document).ready(function () {
         $('#editmatch').find('input[name="point2"]').val(point2);
         $('#editmatch').find('input[name="draw"]').val(draw);
         $('#editmatch').find('input[name="match_id"]').val(match_id);
-        $('#t1').val(team1_id);
+
         $('#t1').html(team1);
-        $('#t2').val(team2_id);
+        $('#editmatch').find('input[name="score1"]').val(score1);
+
         $('#t2').html(team2);
-        $('#editmatch').find('select[name="result"]').val(result_id);
+        $('#editmatch').find('input[name="score2"]').val(score2);
+
     })
 });

@@ -38,6 +38,8 @@
                     data-draw="{{ $match->draw }}"
                     data-date="{{ $match->date }}"
                     data-result="{{ $match->result }}"
+                    data-score1="{{ $match->score1 }}"
+                    data-score2="{{ $match->score2 }}"
                     @if(!is_null($match->result))
                     data-result_id="{{ $match->result_id }}"
                     @endif

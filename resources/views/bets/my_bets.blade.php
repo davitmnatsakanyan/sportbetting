@@ -1,9 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <button class="btn btn-warning">Let's bet</button>
-    </br>
-    </br>
-    </br>
+
    <ul>
        @if(count($matches)>0)
            <table class="table table-bordered">
@@ -24,7 +21,7 @@
                @else
                    <tr>
                         <td><span><label class="label label-default">{{ $match->team1 }}</label></span> ? <span><label class="label label-default">{{ $match->team2 }}</label></span></td>
-                       <td><span>Not Placed!</span> </td>
+                       <td><span>Not Placed!</span><a href="{{ url('bets/bet/'.$match->id) }}" style="margin-left: 25px" class="btn btn-warning">Let's Bet</a> </td>
                    </tr>
                @endif
            @endforeach

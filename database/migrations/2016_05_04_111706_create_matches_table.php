@@ -16,7 +16,8 @@ class CreateMatchesTable extends Migration
             $table->increments('id');
             $table->string('team1');
             $table->string('team2');
-            $table->integer('result')->nullable();
+            $table->integer('score1')->nullable();
+            $table->integer('score2')->nullable();
             $table->timestamp('date');
             $table->timestamps();
         });

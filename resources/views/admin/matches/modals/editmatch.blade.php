@@ -48,12 +48,17 @@
                         </div>
                     </div>
                     <p>Set Result</p>
-                    <select name="result" class="form-control">
-                        <option value="">Set result</option>
-                        <option id="t1"></option>
-                        <option id="t2"></option>
-                        <option id="draw" value="0">Draw</option>
-                    </select>
+
+                    <div class="form-group">
+                    <label id="t1"></label>
+                    <input type="text" name="score1">
+                    </div>
+
+                    <div class="form-group">
+                    <label id="t2"></label>
+                    <input type="text" name="score2">
+                    </div>
+
                     <input type="hidden" name="match_id">
                     <input type="submit" class="btn btn-primary" value="Add">
                 </form>

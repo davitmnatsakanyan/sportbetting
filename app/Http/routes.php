@@ -12,6 +12,8 @@
 */
 
 use App\Group;
+use App\Models\Match;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('home');
@@ -45,9 +47,45 @@ Route::controller('admin/teams', 'TeamController');
  * Bet part
  */
 Route::controller('bets', 'BetController');
+
+/*
+ * Results part
+ */
+Route::controller('results', 'ResultController');
 /*
  * Groups
  */
-Route::resource('groups','GroupController');
+Route::controller('groups','GroupController');
+
+Route::get('achievements', function(){
+    $results = DB::table('matches as M')
+        ->join('points as P', 'M.id', '=', 'P.match_id')
+        ->join('bets as B', 'B.match_id', '=', 'M.id')
+        ->where('B.user_id', Auth::user()->id)
+        ->whereNotNull('M.score1')
+        ->whereNotNull('M.score2')
+        ->select(
+            'M.*',
+            'P.team1 as point1',
+            'P.team2 as point2',
+            'P.draw',
+            'B.pick as pick'
+        )
+        ->get();
+    dd($results);
+
+    foreach($results as $result){
+       $match = new Match();
+       // dd($match->result($result->id));
+         //dd($result);
+        if($match->pick == $match->result($result->id)){
+            // to do
+        }
+        else{
+            echo "filed";
+        }
+    }
+
+});
 
 

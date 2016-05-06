@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\UsersGroups;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class GroupController extends Controller
 {
@@ -19,9 +22,11 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex()
     {
-        $groups = $this->getAllGroups();
+        $groups = $this->getMyGroups();
+       // return view('groups.index')->with(['groups'=>$groups]);
+        echo '<a class="btn btn-warning" href="'.url('groups/create').'"> Create new group </a><a class="btn btn-warning" href="#" style="margin-left: 50px"> Join more groups </a>';
 
         $this->buildGroup($groups, 0);
 
@@ -32,9 +37,9 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getCreate()
     {
-        //
+        return view('groups.creategroup');
     }
 
     /**
@@ -43,9 +48,25 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postCreate(Request $request)
     {
-        //
+       if(!isset($request->type)){
+           $request->type = 0;
+       }
+        $group_id = DB::table('groups')
+            ->InsertGetId([
+            'parent'=>0,
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'user_id'=>Auth::user()->id,
+            'is_private'=>$request->type,
+            'avatar'=>'sdsds'
+        ]);
+
+        $users_groups = new UsersGroups();
+        $users_groups->AddToGroup(Auth::user()->id, $group_id);
+        return redirect('groups');
+
     }
 
     /**
@@ -54,9 +75,25 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getShow($id)
     {
-        //
+        $group = DB::table('groups')
+        ->join('users', 'groups.user_id', '=', 'users.id')
+        ->where('groups.id', $id)
+        ->select(
+        'groups.*',
+        'users.name as creator'
+        )
+        ->get();
+
+        $members = DB::table('users as U')
+            ->join('users_groups as UG', 'U.id', '=', 'UG.user_id')
+            ->where('UG.group_id', $id)
+            ->select(
+                'U.name as name'
+            )
+            ->get();
+        return view('groups.profile')->with(['group'=>$group, 'members'=>$members]);
     }
 
     /**
@@ -65,9 +102,15 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getEdit($id)
     {
-        //
+        $creator = Group::find($id)->user_id;
+        if($creator == Auth::user()->id){
+            // go to edit page
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -93,8 +136,8 @@ class GroupController extends Controller
         //
     }
 
-    public function getAllGroups(){
-        $groups = Group::orderBy('parent')->get()->toArray();
+    public function getMyGroups(){
+        $groups = Group::where('user_id', Auth::user()->id)->orderBy('parent')->get()->toArray();
         return $groups;
     }
 
@@ -102,15 +145,14 @@ class GroupController extends Controller
 
             foreach ($array as $k => $category) {
                 if ($currentParent == $category['parent']) {
-
                     if ($currLevel > $prevLevel && $currentParent == 0) echo " <ul class='nav nav-stacked sTree'> ";
                     if ($currLevel > $prevLevel && $currentParent != 0) echo " <ul>";
 
                     if ($currLevel == $prevLevel) echo " </li> ";
-                    echo "<li data-id='" . $category['id'] . "' data-parent-id='" . $category['parent'] . "' >
+                    echo "<a href='".url('groups/show/'.$category['id'])."'><li data-id='" . $category['id'] . "' data-parent-id='" . $category['parent'] . "' >
                 <div>" . $category['name'] . "
 
-                </div>";
+                </div></li></a>";
 
                     if ($currLevel > $prevLevel) {
                         $prevLevel = $currLevel;

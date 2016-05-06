@@ -18,4 +18,20 @@ class Match extends Model
     public function bets(){
       return  $this->hasMany(Bet::class);
     }
+
+    public function result($id){
+        $match = $this->find($id);
+        if(is_null($match->score1) || is_null($match->score2)) {
+            return null;
+        }
+        else{
+            if ($match->score1 == $match->score2) {
+                return 0;
+            } elseif ($match->score1 > $match->score2) {
+                return $match->team1;
+            } elseif ($match->score1 < $match->score2) {
+                return $match->team2;
+            }
+        }
+    }
 }
