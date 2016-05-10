@@ -99,7 +99,7 @@ class AuthController extends Controller
 
             Auth::login($created_user);
 
-            return redirect('/');
+            return redirect()->intended();
         }
         else {
             Auth::login($finded_user, true);
