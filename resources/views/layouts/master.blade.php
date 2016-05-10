@@ -1,60 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Laravel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="slick, flat, dashboard, bootstrap, admin, template, theme, responsive, fluid, retina">
+    <link rel="shortcut icon" href="javascript:;" type="image/png">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <title>Blank Page</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--right slidebar-->
+    <link href="css/slidebars.css" rel="stylesheet">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!--switchery-->
+    <link href="js/switchery/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
 
+    <!--common style-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
 
-
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
+<body class="sticky-header">
+    <section>
+        @include('layouts.parts.left_sidebar')
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Sport Betting</a>
+        <!-- body content start-->
+        <div class="body-content">
+            @include('layouts.parts.header')
+
+            {{--@include('layouts.parts.page_head')--}}
+
+            @yield('content')
+
+            @include('layouts.parts.right_sidebar')
         </div>
+        <!-- body content end-->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('bets') }}">My Bets</a></li>
-                <li><a href="{{ url('groups') }}">My Groups</a></li>
-                <li><a href="#">Notification</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Rankings</a></li>
-                <li><a href="#">Achievement</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="{{ url('results/results') }}">Results & Tables</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @if(Auth::check())
-                    @if(Auth::user()->isAdmin())
-                    <li><a href="{{ url('admin/dashboard') }}">Admin Area</a></li>
-                    @endif
-                    <li><a href="{{ url('auth/logout') }}">Sign Out</a></li>
-                @else
-                    <li><a href="{{ url('auth/login') }}">Sign In</a></li>
-                @endif
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-<div class="container">
-@yield('content')
-</div>
+    </section>
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.min.js"></script>
+
+    <!--Nice Scroll-->
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+
+    <!--right slidebar-->
+    <script src="js/slidebars.min.js"></script>
+
+    <!--switchery-->
+    <script src="js/switchery/switchery.min.js"></script>
+    <script src="js/switchery/switchery-init.js"></script>
+
+    <!--Sparkline Chart-->
+    <script src="js/sparkline/jquery.sparkline.js"></script>
+    <script src="js/sparkline/sparkline-init.js"></script>
 
 
-        <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!--common scripts for all pages-->
+    <script src="js/scripts.js"></script>
+
 
 </body>
 </html>

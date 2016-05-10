@@ -16,9 +16,17 @@ use App\Models\Match;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
+    return view('layouts.login');
+});
+Route::get('/welcome', function () {
+    return view('layouts.welcome');
+});
+Route::get('/home', function () {
     return view('home');
 });
-
+Route::get('/mybets', function () {
+    return view('mybets');
+});
 /*
  * User Authentication
  */
@@ -56,6 +64,10 @@ Route::controller('results', 'ResultController');
  * Groups
  */
 Route::controller('groups','GroupController');
+
+Route::get('blank', function(){
+   return view('blank');
+});
 
 Route::get('achievements', function(){
     $results = DB::table('matches as M')
