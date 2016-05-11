@@ -100,4 +100,6 @@ Route::get('achievements', function(){
 
 });
 
+Route::any('test', 'TestController@index');
+
 

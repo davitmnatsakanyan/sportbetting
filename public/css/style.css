@@ -109,6 +109,8 @@ input,select,textarea {
 a {
     /*color: #91918E;*/
 }
+<<<<<<< HEAD
+=======
 .mybets-bnt{
     float: right;
     margin-top: 20px;
@@ -178,6 +180,7 @@ a {
 .div-menu .col-md-3:hover{
     background-color: #1c94c4;
 }
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 
 a:focus, a:active, a:hover {
     outline: none;
@@ -401,6 +404,26 @@ h1,h2,h3,h4,h5 {
     display: block;
 }
 
+<<<<<<< HEAD
+.side-navigation > li.menu-list > a:after {
+    content: "\f105";
+    display: inline-block;
+    font-family: "FontAwesome";
+    padding-right: 20px;
+    position: absolute;
+    right: 0;
+}
+
+
+.side-navigation > li.nav-active > a:after {
+    content: "\f107";
+    display: inline-block;
+    font-family: "FontAwesome";
+    padding-right: 20px;
+    position: absolute;
+    right: 0;
+}
+=======
 /*.side-navigation > li.menu-list > a:after {*/
     /*content: "\f105";*/
     /*display: inline-block;*/
@@ -419,6 +442,7 @@ h1,h2,h3,h4,h5 {
     /*position: absolute;*/
     /*right: 0;*/
 /*}*/
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 
 
 .side-navigation > li.menu-list.active > a:after,
@@ -1415,6 +1439,8 @@ a.btn-view-all {
     border-radius: 8px;
     outline: none;
 }
+<<<<<<< HEAD
+=======
 .div-menu{
     display: none;
 }
@@ -1427,6 +1453,7 @@ a.btn-view-all {
         display: inherit;
     }
 }
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 
@@ -1538,7 +1565,11 @@ a.btn-view-all {
 .body-content {
     margin-left: 240px;
     background: #f3f3f3;
+<<<<<<< HEAD
+    min-height: 900px;
+=======
     min-height: 100%;
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     position: relative;
 }
 
@@ -2840,7 +2871,11 @@ h2.form-heading {
     color: #fff;
     padding: 10px 38px;
     border-radius: 2px;
+<<<<<<< HEAD
+    width: 46.5%;
+=======
     width: 100%;
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     text-align: center;
 }
 
@@ -2923,6 +2958,9 @@ h2.form-heading {
     color: #fff;
 }
 
+<<<<<<< HEAD
+.error-wrapper {
+=======
 .welcome {
     background: #2b2b2d;
     color: #fff;
@@ -2933,11 +2971,16 @@ h2.form-heading {
     margin-top: 10%;
 }
 .welcome_wrapper{
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     text-align: center;
     margin-top: 10%;
 }
 
+<<<<<<< HEAD
+.error-wrapper .icon-404{
+=======
 .welcome_wrapper .icon-404{
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     background: url("../img/404.png") no-repeat;
     width: 337px;
     height: 218px;
@@ -2945,7 +2988,11 @@ h2.form-heading {
     margin-left: 30px;
 }
 
+<<<<<<< HEAD
+.error-wrapper h2 {
+=======
 .welcome_wrapper h2 {
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     font-size: 20px;
     font-weight: normal;
     margin: -5px 0 30px -70px;
@@ -2956,11 +3003,30 @@ h2.form-heading {
     text-transform: capitalize;
 }
 
+<<<<<<< HEAD
+.error-wrapper .green-bg {
+=======
 .welcome_wrapper .green-bg {
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     background: #5bc690;
 }
 
 
+<<<<<<< HEAD
+.error-wrapper a.back-btn:hover {
+    color: #5bc690;
+}
+
+.error-wrapper p, .error-wrapper a {
+    font-size: 18px;
+}
+
+.error-wrapper p   {
+    color: #a978d1;
+}
+
+.error-wrapper a.back-btn {
+=======
 .welcome_wrapper a.back-btn:hover {
     color: #5bc690;
 }
@@ -2974,6 +3040,7 @@ h2.form-heading {
 }
 
 .welcome_wrapper a.back-btn {
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     color: #fff;
 }
 
@@ -2983,6 +3050,21 @@ h2.form-heading {
 ------------------*/
 
 
+<<<<<<< HEAD
+.error-wrapper .purple-bg {
+    background: #a978d1;
+}
+
+.body-500 .error-wrapper p a {
+    color: #a978d1;
+}
+
+.body-500 .error-wrapper p {
+    color: #63c18d;
+}
+
+.error-wrapper .icon-500{
+=======
 .welcome_wrapper .purple-bg {
     background: #a978d1;
 }
@@ -2996,13 +3078,18 @@ h2.form-heading {
 }
 
 .welcome_wrapper .icon-500{
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     background: url("../img/500.png") no-repeat;
     width: 331px;
     height: 219px;
     display: inline-block;
 }
 
+<<<<<<< HEAD
+.body-500 .error-wrapper h2 {
+=======
 .body-500 .welcome_wrapper h2 {
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     margin: -5px 0 30px -50px;
     width: 300px;
 }
@@ -4438,10 +4525,17 @@ table.sliders tr td {
 
 .profile-hero {
     position: relative;
+<<<<<<< HEAD
+    background: url("../img/profile-banner.jpg") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 359px;
+=======
     background: url("../img/back.jpg") no-repeat;
     background-size: cover;
     width: 100%;
     height: 550px;
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 }
 
 .profile-intro {
@@ -4449,7 +4543,10 @@ table.sliders tr td {
     padding: 40px 0;
     color: #fff;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 }
 
 .profile-intro img {
@@ -4465,8 +4562,12 @@ table.sliders tr td {
 }
 
 .profile-intro span {
+<<<<<<< HEAD
+    font-size: 14px;
+=======
     font-size: 20px !important;
     color: turquoise;
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 
 }
 
@@ -6002,10 +6103,17 @@ h3.time-line-title {
 
 .profile-hero {
     position: relative;
+<<<<<<< HEAD
+    background: url("../img/profile-banner.jpg") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 359px;
+=======
     background: url("../img/back.jpg") no-repeat;
     background-size: cover;
     width: 100%;
     height: 550px;
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 }
 
 .profile-intro {
@@ -6016,8 +6124,13 @@ h3.time-line-title {
 }
 
 .profile-intro img {
+<<<<<<< HEAD
+    width: 70px;
+    height: 70px;
+=======
     width: 150px;
     height: 150px;
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
     border-radius: 50%;
 }
 

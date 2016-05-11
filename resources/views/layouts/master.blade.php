@@ -31,10 +31,17 @@
         @include('layouts.parts.left_sidebar')
 
         <!-- body content start-->
+<<<<<<< HEAD
+        <div class="body-content" style="min-height: 1200px;">
+            @include('layouts.parts.header')
+
+            @include('layouts.parts.page_head')
+=======
         <div class="body-content">
             @include('layouts.parts.header')
 
             {{--@include('layouts.parts.page_head')--}}
+>>>>>>> 8cd91e08d0454507e43185cd0e4142374246d8e9
 
             @yield('content')
 
